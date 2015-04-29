@@ -1,0 +1,46 @@
+<ion-view view-title="Player">
+  <ion-content class="padding">
+      <label class="item item-input">
+          <span class="input-label">Audio Url</span>
+          <input id="tbAudioUrl" type="text" value="{{audioUrl}}">
+      </label>
+      <audio id="audioPlayer" src=""></audio>
+      <div class="padding">
+          <button id="btnPlay" ng-click="play()" class="button button-balanced">
+              Play
+          </button>
+          <button id="btnPause" ng-click="pause()" class="button button-stable">
+              Pause
+          </button>
+          <button id="btnStop" ng-click="stop()" class="button button-assertive">
+              Stop
+          </button>
+          <button id="btnMark" ng-click="mark()" class="button button-calm">
+              Mark
+          </button>
+          <button id="btnSpeak" ng-click="speak()" class="button button-positive">
+              John 1:1-5, 47-50
+          </button>
+      </div>
+      <div class="padding">
+          <div class="item range range-positive">
+              <i>{{currentTime}}</i>
+              <input type="range" id="progress" min="0" max="{{duration}}" value="">
+              <i>{{duration}}</i>
+          </div>
+      </div>
+      <div class="padding">
+          <ul class="list">
+              <li class="item item-toggle">
+                  Repeat
+                  <label class="toggle toggle-balanced">
+                      <input id="cbRepeat" type="checkbox">
+                      <div class="track">
+                          <div class="handle"></div>
+                      </div>
+                  </label>
+              </li>
+          </ul>
+      </div>
+  </ion-content>
+</ion-view>
