@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
     var player = document.getElementById('audioPlayer');
     var audioUrl = document.getElementById('tbAudioUrl');
     var progress = document.getElementById('progress');
-    var cbRepeat = document.getElementById('ccbRepeat');
+    var cbRepeat = document.getElementById('cbRepeat');
     $scope.playlists = Playlists.all();
     $scope.audioUrl = "";
     $scope.duration = 0.0;
@@ -27,17 +27,17 @@ angular.module('starter.controllers', [])
         {
             stopTime = $scope.duration;
         }
-        
+
         if (currentTime >= stopTime)
         {
             player.pause();
-            verseQueueIndex = verseQueueIndex++;
+            verseQueueIndex = verseQueueIndex + 1;
             if (verseQueueIndex < verseQueueLength) {
                 var queue = $scope.playlists[playlistIndex].verseQueues[verseQueueIndex];
                 playQueue(queue);
             }
             else {
-                playlistIndex = playlistIndex++;
+                playlistIndex = playlistIndex + 1;
 
                 if (playlistIndex < playlistLength) {
                     var playlist = $scope.playlist[playlistIndex];
@@ -69,12 +69,12 @@ angular.module('starter.controllers', [])
 
     $scope.play = function () {
         $scope.audioUrl = audioUrl.value;
-        loadPlayer($scope.audioUrl);        
+        loadPlayer($scope.audioUrl);
         player.play();
     }
 
     $scope.pause = function () {
-        player.pause();        
+        player.pause();
     }
 
     $scope.stop = function () {
@@ -92,17 +92,7 @@ angular.module('starter.controllers', [])
 
     startPlaylist = function () {
         playlistLength = $scope.playlists.length;
-        //angular.forEach($scope.playlists, function (playlist) {
-        //    prefixVoiceText = playlist.book + ' ' + playlist.chapterText + " " + playlist.chapter.toString() + ' ';
-        //    verseQueueIndexMax = playlist.verseQueues.length - 1;
-        //    loadPlayer(playlist.audioUrl);
-        //    var verseQueues = playlist.verseQueues;
-
-        //    angular.forEach(verseQueues, function (queue) {
-        //        playQueue(queue);
-        //        break;
-        //    });
-        //});
+        playlistIndex = 0;
 
         if (playlistIndex < playlistLength) {
             var playlist = $scope.playlists[playlistIndex];
@@ -111,32 +101,32 @@ angular.module('starter.controllers', [])
             verseQueueLength = playlist.verseQueues.length;
 
             if (verseQueueIndex < verseQueueLength) {
-                //var promise = 
+                //var promise =
                     loadPlayer(playlist.audioUrl);
                 //    var verseQueues = playlist.verseQueues;
                 //promise.then(function (response) {
                     var queue = playlist.verseQueues[verseQueueIndex];
                     playQueue(queue);
                 //});
-                
+
             }
         }
 
     }
-    
+
 
     loadPlayer = function (audioUrl) {
         //var deferred = $q.defer();
         if (player.src != audioUrl) {
             player.src = audioUrl;
             player.load();
-            
+
             //deferred.resolve(true);
-            
+
             //else {
             //    deferred.resolve(false);
             //}
-             
+
         }
         //return deferred.promise;
     }
@@ -144,15 +134,14 @@ angular.module('starter.controllers', [])
     playQueue = function (queue) {
         var msg = new SpeechSynthesisUtterance(prefixVoiceText + queue.voiceText);
         //var promise = playVoiceSynthesis(prefixVoiceText, queue.voiceText);
+        player.currentTime = queue.startTime;
+        stopTime = queue.endTime;
 
         msg.addEventListener('end', function () {
-            player.currentTime = queue.startTime;
-            stopTime = queue.endTime;
             player.play();
         });
+
         window.speechSynthesis.speak(msg);
-        
-        
     }
 
     playVoiceSynthesis = function (prefixVoiceText, voiceText) {
@@ -162,13 +151,13 @@ angular.module('starter.controllers', [])
         window.speechSynthesis.speak(msg);
 
         //deferred.resolve(true);
-        
+
         //else {
         //    deferred.reject(true);
         //}
         return deferred.promise;
     }
-    
+
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {

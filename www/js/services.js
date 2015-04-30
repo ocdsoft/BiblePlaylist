@@ -68,7 +68,7 @@ playlistServices.factory('Playlists', function() {
                 endTime: 37.590423,
             },
             {
-                voicText: 'verses forty seven through fifty',
+                voiceText: 'verses forty seven through fifty',
                 startTime: 377.14363,
                 endTime: 415.942387
             }
