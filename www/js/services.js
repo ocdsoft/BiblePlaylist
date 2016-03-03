@@ -49,6 +49,8 @@ playlistServices.factory('Chats', function() {
   };
 });
 
+//get entire book of matthew
+//https://getbible.net/json?p=40&v=asv
 playlistServices.factory('Playlists', function() {
     // Might use a resource here that returns a JSON array
 
