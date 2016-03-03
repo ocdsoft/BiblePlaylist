@@ -149,12 +149,7 @@ angular.module('starter.controllers', [])
         var msg = new SpeechSynthesisUtterance(prefixVoiceText + voiceText);
 
         window.speechSynthesis.speak(msg);
-
-        //deferred.resolve(true);
-
-        //else {
-        //    deferred.reject(true);
-        //}
+        
         return deferred.promise;
     }
 
