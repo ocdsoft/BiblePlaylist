@@ -53,7 +53,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-curator': {
           templateUrl: 'templates/tab-curator.html',
-          controller: 'PlayerCtrl'
+          controller: 'CuratorCtrl'
         }
       }
     })
