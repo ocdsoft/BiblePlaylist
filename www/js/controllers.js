@@ -393,7 +393,7 @@ angular.module('starter.controllers', [])
     }
     
     $scope.createNTJson = function () {
-        alert('Not Implemented Not!');
+        alert('Not Implemented Yet!');
     }
 
     var startPlaylist = function () {
