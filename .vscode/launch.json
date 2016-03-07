@@ -1,0 +1,47 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Launch",
+			"type": "node",
+			"request": "launch",
+			"program": "${workspaceRoot}/js/app.js",
+			"stopOnEntry": false,
+			"args": [],
+			"cwd": "${workspaceRoot}",
+			"runtimeExecutable": null,
+			"runtimeArgs": [
+				"--nolazy"
+			],
+			"env": {
+				"NODE_ENV": "development"
+			},
+			"externalConsole": false,
+			"sourceMaps": false,
+			"outDir": null
+		},
+		{
+			"name": "Attach",
+			"type": "node",
+			"request": "attach",
+			"port": 8100,
+			"sourceMaps": false,
+			"outDir": null,
+			"localRoot": "${workspaceRoot}",
+			"remoteRoot": null
+		},
+        {
+        "name": "Launch Chrome",
+        "type": "chrome",
+        "request": "launch",
+        "url": "http://localhost:8100/",//Change to whatever you homepage is
+        "runtimeArgs": [
+            "--new-window", //Open in new window
+            "--user-data-dir=C:/dev/", //Can be any directory. Makes chrome load in a different directory so that it opens in a new instance.
+            "--remote-debugging-port=9222" //Open in port 9222 (standard chrome debug port)
+        ],
+        "webRoot": "www/js/", //The directory that contains js, ts and map files
+        "sourceMaps": true
+        }
+	]
+}

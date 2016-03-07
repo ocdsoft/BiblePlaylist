@@ -50,3 +50,8 @@ gulp.task('git-check', function(done) {
   }
   done();
 });
+
+gulp.task('serve', function(done) {
+    sh.exec("ionic serve", done);
+});
+
